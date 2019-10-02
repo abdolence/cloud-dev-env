@@ -94,6 +94,8 @@ RUN CLOUD_SDK_REPO="cloud-sdk-$(grep VERSION_CODENAME /etc/os-release | cut -d '
 
 WORKDIR /opt/build
 
+COPY common.sh /opt
+COPY google-cloud-init.sh /opt
 COPY entrypoint.sh /opt
 
 COPY utils/*.sh /root/.local/bin/
