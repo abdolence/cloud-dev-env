@@ -24,8 +24,10 @@ GKE_CLUSTER_NAME=${GKE_CLUSTER_NAME:?'GKE_CLUSTER_NAME variable missing.'}
 info "Setting up GCP environment".
 
 run 'echo "${GOOGLE_KEY_FILE}" | base64 -d >> /tmp/key-file.json'
-run gcloud auth activate-service-account --key-file /tmp/key-file.json --quiet ${gcloud_debug_args}
-export GOOGLE_APPLICATION_CREDENTIALS=/tmp/key-file.json
+mkdir /opt/keys
+
+run gcloud auth activate-service-account --key-file /opt/keys/system-account.json --quiet ${gcloud_debug_args}
+export GOOGLE_APPLICATION_CREDENTIALS=/opt/keys/system-account.json
 
 run gcloud config set project ${GOOGLE_PROJECT} --quiet ${gcloud_debug_args}
 run gcloud config set compute/region ${GOOGLE_PROJECT_REGION} --quiet ${gcloud_debug_args}
