@@ -2,7 +2,7 @@
 
 if test "$#" -lt 1; then
     echo "Illegal number of parameters. Directory must be specified"
-    exit 256
+    exit 255
 fi
 
 QUALITY=${2:-"100"}
