@@ -28,7 +28,7 @@ run gcloud auth activate-service-account --key-file /tmp/key-file.json --quiet $
 export GOOGLE_APPLICATION_CREDENTIALS=/tmp/key-file.json
 
 run gcloud config set project ${GOOGLE_PROJECT} --quiet ${gcloud_debug_args}
-run gcloud config set compute/${GOOGLE_PROJECT_REGION} --quiet ${gcloud_debug_args}
+run gcloud config set compute/region ${GOOGLE_PROJECT_REGION} --quiet ${gcloud_debug_args}
 run gcloud config set compute/zone ${GOOGLE_PROJECT_ZONE} --quiet ${gcloud_debug_args}
 run gcloud container clusters get-credentials ${GKE_CLUSTER_NAME} --zone ${GOOGLE_PROJECT_ZONE} --project ${GOOGLE_PROJECT} --quiet ${gcloud_debug_args}
 run gcloud auth configure-docker --quiet ${gcloud_debug_args}
