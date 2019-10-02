@@ -11,7 +11,7 @@
 # Optional globals:
 #   DEBUG
 
-source "$(dirname "$0")/common.sh"
+source "$(dirname "$0")/cloud-env-common.sh"
 enable_debug
 
 # mandatory parameters

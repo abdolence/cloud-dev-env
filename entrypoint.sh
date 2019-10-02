@@ -1,5 +1,5 @@
 #!/bin/bash
 
-"$(dirname "$0")/google-cloud-init.sh"
+cloud-env-init.sh
 
 /bin/bash
