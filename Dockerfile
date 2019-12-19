@@ -31,8 +31,9 @@ RUN dpkg-reconfigure locales
 # Java / Amazon Corretto
 RUN apt-get update && apt-get install java-common
 
-RUN JAVA_SDK_URL="https://d3pxv6yz143wms.cloudfront.net/8.222.10.1/java-1.8.0-amazon-corretto-jdk_8.222.10-1_amd64.deb" && \
-    TEMP_DEB="$(mktemp)" && curl -o "$TEMP_DEB" ${JAVA_SDK_URL} && dpkg -i "$TEMP_DEB" && rm -f "$TEMP_DEB"
+RUN curl https://apt.corretto.aws/corretto.key | sudo apt-key add -
+RUN sudo add-apt-repository 'deb https://apt.corretto.aws stable main'
+RUN apt-get update && apt-get install -y java-1.8.0-amazon-corretto-jdk
 
 ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-amazon-corretto
 
